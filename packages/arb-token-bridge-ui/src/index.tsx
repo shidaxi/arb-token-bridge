@@ -13,9 +13,10 @@ import 'tippy.js/themes/light.css'
 
 import './styles/tailwind.css'
 
-if (process.env.NODE_ENV === 'development') {
-  registerLocalNetwork()
-}
+// if (process.env.NODE_ENV === 'development') {
+//   registerLocalNetwork()
+// }
+registerLocalNetwork()
 
 Sentry.init({
   dsn: process.env.REACT_APP_SENTRY_DSN,

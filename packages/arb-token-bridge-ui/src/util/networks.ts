@@ -14,7 +14,9 @@ export enum ChainId {
   ArbitrumOne = 42161,
   ArbitrumNova = 42170,
   ArbitrumRinkeby = 421611,
-  ArbitrumGoerli = 421613
+  ArbitrumGoerli = 421613,
+  EthLocal = 1337,
+  ArbitrumLocal = 412346
 }
 
 export const rpcURLs: { [chainId: number]: string } = {
@@ -34,7 +36,7 @@ export const rpcURLs: { [chainId: number]: string } = {
   [ChainId.ArbitrumNova]: 'https://nova.arbitrum.io/rpc',
   // L2 Testnets
   [ChainId.ArbitrumRinkeby]: 'https://rinkeby.arbitrum.io/rpc',
-  [ChainId.ArbitrumGoerli]: 'https://goerli-rollup.arbitrum.io/rpc'
+  [ChainId.ArbitrumGoerli]: process.env.REACT_APP_ARBITRUM_GOERLI_RPC_URL || 'https://goerli-rollup.arbitrum.io/rpc'
 }
 
 NitroNetworks.l1Networks[1].rpcURL = rpcURLs[1]
@@ -152,6 +154,12 @@ export function getNetworkName(
 
     case ChainId.ArbitrumGoerli:
       return 'Arbitrum Goerli'
+
+    case ChainId.EthLocal:
+      return 'Ethereum Local'
+
+    case ChainId.ArbitrumLocal:
+      return 'Arbitrum Local'
 
     default:
       return 'Unknown'
